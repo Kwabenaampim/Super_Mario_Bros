@@ -2,7 +2,7 @@
 WIDTH = 220
 HEIGHT = 238
 
-#Image of Marion each position is [bank,x,y,w,h]
+#Image of Mario in each position is [bank,x,y,w,h]
 MARIO_IMAGE = (0,0,0,16,16)
 MARIO_HEIGHT = 16
 INITIAL_X_MARIO = 0

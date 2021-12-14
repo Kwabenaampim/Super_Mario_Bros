@@ -24,7 +24,7 @@ class Board:
         self.width = w
         self.height = h
         # This keeps track of the enemies on screen but don't know how to do so
-        self.enemies = 0
+        self.__enemies_list = [randint(0,3), randint(0,3), randint(0,3), randint(0,3)]
         
         # From here most of the classes are initialized, which are neccessary to make most of drawings
         # Player
@@ -47,9 +47,9 @@ class Board:
         self.bushes = Bushes(224)
         # Enemies
         # Koopa
-        self.koopa = Koopa(240, 216)
+        self.koopa = Koopa(216)
         # Goomba
-        self.goomba = Goomba(240, 224)
+        self.goomba = Goomba(224)
     def update(self):
         if pyxel.btnp(pyxel.KEY_Q):
             pyxel.quit()
@@ -125,14 +125,12 @@ class Board:
                         pyxel.blt(i-self.mario.decrease, self.pipes.y+(16-(o*16)), constant.PIPE_IMAGE[0], constant.PIPE_IMAGE[1], constant.PIPE_IMAGE[2], constant.PIPE_IMAGE[3], constant.PIPE_IMAGE[4])
             # The enemy generator conditional
             # While there aren't enemies on the screen keep generating enemies every 4 seconds
-        #if self.enemies <4 and pyxel.frame_count % 240: # enemies less 4 
-        #    x = randint(0,3)
-        #    if x in range(0,3):
-                pyxel.blt(self.goomba.goomba_x-self.mario.decrease ,  self.goomba.goomba_y, constant.GOOMBA_IMAGE[0] , constant.GOOMBA_IMAGE[1], constant.GOOMBA_IMAGE[2], constant.GOOMBA_IMAGE[3], constant.GOOMBA_IMAGE[4])
-        #        self.enemies += 1
-        #    elif x == 3:
-                pyxel.blt(self.koopa.koopa_x - self.mario.decrease , self.koopa.koopa_y, constant.KOOPA_TROOPA_IMAGE[0] , constant.KOOPA_TROOPA_IMAGE[1], constant.KOOPA_TROOPA_IMAGE[2], constant.KOOPA_TROOPA_IMAGE[3], constant.KOOPA_TROOPA_IMAGE[4])
-        #        self.enemies += 1
+            # This generates a goomba
+            if i in self.goomba.goomba_position:
+                pyxel.blt(i-self.mario.decrease + self.goomba.goomba_x ,  self.goomba.goomba_y, constant.GOOMBA_IMAGE[0] , constant.GOOMBA_IMAGE[1], constant.GOOMBA_IMAGE[2], constant.GOOMBA_IMAGE[3], constant.GOOMBA_IMAGE[4], 12)
+            # This will generate a koopa
+            if i in self.koopa.koopa_position:
+                pyxel.blt(i - self.mario.decrease + self.koopa.koopa_x , self.koopa.koopa_y, constant.KOOPA_TROOPA_IMAGE[0] , constant.KOOPA_TROOPA_IMAGE[1], constant.KOOPA_TROOPA_IMAGE[2], constant.KOOPA_TROOPA_IMAGE[3], constant.KOOPA_TROOPA_IMAGE[4], 12)
         
         # Player drawing sprite and movement    
         pyxel.blt(self.mario.x, self.mario.y, 0, constant.MARIO_IMAGE[0], constant.MARIO_IMAGE[2], constant.MARIO_IMAGE[3], constant.MARIO_IMAGE[4], 12)

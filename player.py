@@ -29,6 +29,6 @@ class Player():
             if self.y > 154:
                 self.y -= 8
             self.y +=2
-        elif self.y < 224:
+        elif direction.lower()== 'down' and self.y < 224:
             self.y += 2
         # How do I add the effect of gravity?

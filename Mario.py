@@ -1,5 +1,5 @@
 # here it is to be renamed as Mario when the jump movement is implemented
-class Player():
+class MARIO():
     def __init__(self, x:int, y:int, dir:bool ):
         self.x = x
         self.y = y
@@ -28,7 +28,6 @@ class Player():
         if direction.lower() == 'up' and self.y < size - mario_y_size:
             if self.y > 154:
                 self.y -= 8
-            self.y +=2
         elif direction.lower()== 'down' and self.y < 224:
             self.y += 2
         # How do I add the effect of gravity?

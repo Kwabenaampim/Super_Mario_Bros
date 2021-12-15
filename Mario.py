@@ -1,12 +1,20 @@
 # here it is to be renamed as Mario when the jump movement is implemented
 class MARIO():
-    def __init__(self, x:int, y:int, dir:bool ):
+    def __init__(self, x:int, y:int, dir:bool):
+        # x is the starting point of Mario and y the height at which mario spawns
         self.x = x
         self.y = y
+        # The moved_middle was meant to be a distance tracker variable
+        # That would have allowed for a rudimentary collision system
+        # but it would stop working once the coordinates exceeded the middle of the
+        # screen
         self.moved_middle=0
+        # This variable is used to make the objects move once mario is 'locked'
+        # in the middle of the screen
         self.decrease = 0
+        # This two variables where straight out copied from the class example
+        # Meant to be used for animation and tracking the amount of lives of Mario
         self.direction = dir
-        #self.sprite =(0,0) # Later to be susbtituted byt the tuple in Constants folder
         self.lives = 3
     def move(self, direction:str, size:int):
         mario_x_size = 16
@@ -24,10 +32,12 @@ class MARIO():
             # I am assuming that if it is not right it will be left
             self.x = max(self.x-2, 0) # The same here as if right
         
-        # How to make it 'fall' once the player has reached certain height
+        # The following two act as the vertical movement tracker of Mario
         if direction.lower() == 'up' and self.y < size - mario_y_size:
             if self.y > 154:
                 self.y -= 8
+        # This is so that once down the sprite starts to fall down
+        # Although we are missing something for if the player keeps pressing 'up'
+        # It will stay up
         elif direction.lower()== 'down' and self.y < 224:
             self.y += 2
-        # How do I add the effect of gravity?

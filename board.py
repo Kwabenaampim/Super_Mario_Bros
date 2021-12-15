@@ -12,7 +12,8 @@ from bushes import Bushes
 from clouds import Clouds
 # This imports the constants
 import constant
-
+# IMporting other libraries
+from random import randint
 # here starts the board class
 class Board:
     def __init__(self, w, h):

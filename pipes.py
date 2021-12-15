@@ -8,3 +8,5 @@ class Pipes:
         self.pipes_list = [432, 592]
         # Later on, in the board file I'll add the different conditionals
         # That will draw the different heights of the pipe
+        # An update method was to be added so to check collisions with Mario
+        # Such point was never reached
